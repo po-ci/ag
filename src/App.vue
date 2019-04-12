@@ -7,8 +7,7 @@
       <v-layout row pb-2>
         <v-flex xs8 offset-xs2>
           <v-card class="card--flex-toolbar">
-            <control-panel/>
-            <v-divider></v-divider>
+
 
             <v-card-text id="file-zone">
               <file-zone/>
@@ -25,7 +24,7 @@
 </template>
 
 <script>
-  import ControlPanel from './components/ControlPanel'
+
   import FileZone from './components/FileZone'
   import Header from './components/Header'
 
@@ -33,7 +32,6 @@
     name: 'App',
     components: {
       Header,
-      ControlPanel,
       FileZone
     }
   }
@@ -58,13 +56,6 @@
     margin-top: -64px;
   }
 
-  #file-zone {
-    background-color:#f1f0f0;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 5px;
-  }
+
 
 </style>

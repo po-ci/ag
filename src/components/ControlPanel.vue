@@ -4,14 +4,14 @@
     <v-toolbar card prominent>
 
 
-      <v-btn-toggle v-model="toggle" multiple>
-        <v-btn >
+      <v-btn-toggle :value="toggle" multiple>
+        <v-btn @click="$emit('bold')" >
           <v-icon>format_bold</v-icon>
         </v-btn>
-        <v-btn >
+        <v-btn @click="$emit('italic')">
           <v-icon>format_italic</v-icon>
         </v-btn>
-        <v-btn >
+        <v-btn @click="$emit('underlined')">
           <v-icon>format_underlined</v-icon>
         </v-btn>
 
@@ -24,9 +24,10 @@
 <script>
 export default {
   name: "ControlPanel",
+  props: {toggle:Array},
   data: function () {
     return {
-      toggle: [0, 0, 0]
+     // toggle: [0, 0, 0]
     }
   },
 };
