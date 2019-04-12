@@ -1,4 +1,10 @@
-# Simple Text Editor skeleton
+# Simple Text Editor
+
+
+## Download
+
+git clone https://github.com/po-ci/ag.git
+
 
 ## Build Setup
 
@@ -16,6 +22,9 @@ npm run build
 npm run build --report
 ```
 
-## Notes
-+ Text sample is give in `src/text.service.js`
-+ Given files structure is not obligatory and could be changed
+
+## Dependencies
+- axios: "^0.18.0",
+- vue: "^2.6.10",
+- vuetify: "^1.5.10"
+- vue-template-compiler: "^2.6.10"
