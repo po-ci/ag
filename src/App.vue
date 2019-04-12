@@ -7,11 +7,11 @@
       <v-layout row pb-2>
         <v-flex xs8 offset-xs2>
           <v-card class="card--flex-toolbar">
-        <control-panel />
+            <control-panel/>
             <v-divider></v-divider>
 
-            <v-card-text style="height: 200px;">
-              adsd
+            <v-card-text id="file-zone">
+              <file-zone/>
 
             </v-card-text>
           </v-card>
@@ -25,36 +25,46 @@
 </template>
 
 <script>
-import ControlPanel from './components/ControlPanel'
-import FileZone from './components/FileZone'
-import Header from './components/Header'
+  import ControlPanel from './components/ControlPanel'
+  import FileZone from './components/FileZone'
+  import Header from './components/Header'
 
-export default {
-  name: 'App',
-  components: {
-    Header,
-    ControlPanel,
-    FileZone
+  export default {
+    name: 'App',
+    components: {
+      Header,
+      ControlPanel,
+      FileZone
+    }
   }
-}
 </script>
 
 <style>
 
 
-#app {
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-}
-main {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
+  #app {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+  }
 
-.card--flex-toolbar {
-  margin-top: -64px;
-}
+  main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .card--flex-toolbar {
+    margin-top: -64px;
+  }
+
+  #file-zone {
+    background-color:#f1f0f0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+  }
 
 </style>

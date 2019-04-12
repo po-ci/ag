@@ -4,7 +4,7 @@
     <v-toolbar card prominent>
 
 
-      <v-btn-toggle v-model="toggle_multiple" multiple>
+      <v-btn-toggle v-model="toggle" multiple>
         <v-btn >
           <v-icon>format_bold</v-icon>
         </v-btn>
@@ -23,7 +23,12 @@
 
 <script>
 export default {
-  name: "ControlPanel"
+  name: "ControlPanel",
+  data: function () {
+    return {
+      toggle: [0, 0, 0]
+    }
+  },
 };
 </script>
 <style scoped>
