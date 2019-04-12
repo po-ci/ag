@@ -8,10 +8,13 @@
     />
 
     <v-divider></v-divider>
+
     <div id="file-zone">
       <v-container>
         <v-layout row wrap>
-          <v-flex xs12 md5>
+
+
+          <v-flex xs12 md12>
             <div id="file">
               <word v-for="(w,index) in getSplitText"
                     :word="w"
@@ -25,14 +28,44 @@
 
             </div>
           </v-flex>
-
-          <v-flex xs12 md5 offset-md2>
-            <div id="inputtext">
-              <textarea style="width: 100%; height:100%;" v-model="text"></textarea>
-            </div>
+          <v-flex  xs12 md12>
+            <v-btn
+              class="ma-0"
+              color="primary"
+              dark
+              small
+              @click.stop="dialog = true"
+            >
+              Edit Text
+            </v-btn>
           </v-flex>
+
         </v-layout>
       </v-container>
+
+      <v-dialog
+        v-model="dialog"
+        max-width="500"
+      >
+        <v-card>
+          <v-card-title class="headline">Input Text</v-card-title>
+
+          <v-card-text  >
+            <textarea id="tarea" v-model="text"></textarea>
+          </v-card-text>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+              color="indigo darken-1"
+             dark
+              @click="dialog = false"
+            >
+              ok
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </div>
   </div>
 </template>
@@ -47,6 +80,7 @@
     components: {word, ControlPanel},
     data: function () {
       return {
+        dialog: false,
         text: "",
         indexSelected: null,
         bold: [],
@@ -110,16 +144,9 @@
 </script>
 <style scoped>
 
-  #inputtext {
-    width: 300px;
-    height: 300px;
-    flex-grow: 1;
-    background-color: #fff;
-    border: 1px solid #e4dede;
-  }
+
 
   #file {
-    width: 300px;
     height: 300px;
     flex-grow: 1;
     background-color: #fff;
@@ -133,5 +160,10 @@
     flex-direction: column;
     align-items: center;
     padding: 5px;
+  }
+
+  #tarea{
+   width: 100%;
+    height: 100%;
   }
 </style>
