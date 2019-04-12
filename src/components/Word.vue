@@ -39,7 +39,7 @@
     methods: {
 
       selectWord: function () {
-        this.$emit('wordSelected', this.index)
+        this.$emit('selectWord', {index: this.index, word: this.word})
       }
     }
   }

@@ -5,16 +5,17 @@
       v-on:italic="onItalic"
       v-on:underlined="onUnderline"
       :toggle="toggle"
+      :wordSelected="wordSelected"
     />
 
     <v-divider></v-divider>
 
-    <div id="file-zone">
+    <div>
       <v-container>
         <v-layout row wrap>
 
-
           <v-flex xs12 md12>
+
             <div id="file">
               <word v-for="(w,index) in getSplitText"
                     :word="w"
@@ -23,12 +24,13 @@
                     :bold="bold"
                     :italic="italic"
                     :underlined="underlined"
-                    v-on:wordSelected="wordSelected"
+                    v-on:selectWord="selectWord"
               />
 
             </div>
+
           </v-flex>
-          <v-flex  xs12 md12>
+          <v-flex>
             <v-btn
               class="ma-0"
               color="primary"
@@ -38,7 +40,13 @@
             >
               Edit Text
             </v-btn>
+            <synonyms
+              :word-selected="wordSelected"
+              :index-selected="indexSelected"
+              v-on:changeWord="changeWord"
+            ></synonyms>
           </v-flex>
+
 
         </v-layout>
       </v-container>
@@ -50,7 +58,7 @@
         <v-card>
           <v-card-title class="headline">Input Text</v-card-title>
 
-          <v-card-text  >
+          <v-card-text>
             <textarea id="tarea" v-model="text"></textarea>
           </v-card-text>
 
@@ -58,7 +66,7 @@
             <v-spacer></v-spacer>
             <v-btn
               color="indigo darken-1"
-             dark
+              dark
               @click="dialog = false"
             >
               ok
@@ -74,25 +82,34 @@
 
   import word from './Word.vue'
   import ControlPanel from './ControlPanel'
+  import Synonyms from './Synonyms'
 
   export default {
     name: "FileZone",
-    components: {word, ControlPanel},
+    components: {word, ControlPanel, Synonyms},
     data: function () {
       return {
         dialog: false,
-        text: "",
+        text: "Hello World",
         indexSelected: null,
+        wordSelected: null,
         bold: [],
         italic: [],
         underlined: [],
-        //  toggle: [false, false, false]
+        synonyms: [],
+        loading: false
       }
     },
 
     methods: {
-      wordSelected: function (value) {
-        this.indexSelected = value
+      changeWord: function (obj) {
+        var a = this.getSplitText
+        a[obj.index] = obj.newWord
+        this.text = a.join(" ")
+      },
+      selectWord: function (obj) {
+        this.indexSelected = obj.index
+        this.wordSelected = obj.word
       },
       onUnderline: function (value) {
         var i = this.underlined.findIndex(item => item == this.indexSelected)
@@ -123,6 +140,7 @@
       }
     },
     computed: {
+
       toggle: function () {
         let arr = []
         if (this.bold.findIndex(item => item == this.indexSelected) != -1) {
@@ -145,25 +163,15 @@
 <style scoped>
 
 
-
   #file {
     height: 300px;
-    flex-grow: 1;
     background-color: #fff;
     border: 1px solid #e4dede;
   }
 
-  #file-zone {
-    background-color: #f1f0f0;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 5px;
-  }
 
-  #tarea{
-   width: 100%;
+  #tarea {
+    width: 100%;
     height: 100%;
   }
 </style>

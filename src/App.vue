@@ -1,25 +1,17 @@
 <template>
   <div id="app">
     <v-card flat>
-
       <Header/>
-
-      <v-layout row pb-2>
+      <v-layout row wrap pb-2>
         <v-flex xs8 offset-xs2>
           <v-card class="card--flex-toolbar">
-
-
-            <v-card-text id="file-zone">
+            <v-card-text>
               <file-zone/>
-
             </v-card-text>
           </v-card>
-
         </v-flex>
       </v-layout>
     </v-card>
-
-
   </div>
 </template>
 
@@ -39,21 +31,8 @@
 
 <style>
 
-
-  #app {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-  }
-
-  main {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-  }
-
   .card--flex-toolbar {
-    margin-top: -64px;
+   margin-top: -64px;
   }
 
 
